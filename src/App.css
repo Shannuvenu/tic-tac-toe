@@ -1,0 +1,42 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 110px;
+    height: 110px;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: all .3s ease;
+    background: white;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    background: #f3f3f3;
+}
+
+.winner-cell {
+    background: #4CAF50;
+    color: white;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+
+    from {
+        box-shadow: 0 0 10px #4CAF50;
+    }
+
+    to {
+        box-shadow: 0 0 35px #4CAF50;
+    }
+
+}

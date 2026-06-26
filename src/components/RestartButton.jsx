@@ -1,12 +1,14 @@
 function RestartButton({ restartGame }) {
 
     return (
+
         <button
             className="restart"
             onClick={restartGame}
         >
-            Restart Game
+            🔄 Play Again
         </button>
+
     );
 
 }

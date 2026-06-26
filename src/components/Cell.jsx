@@ -1,14 +1,19 @@
-function Cell({ value, onClick, isWinner }) {
+import { motion } from "framer-motion";
 
+function Cell({ value, onClick, isWinner }) {
     return (
-        <button
-            className={`cell ${isWinner ? "winner-cell" : ""}`}
+        <motion.button
+            className={`cell ${isWinner ? "winner" : ""}`}
             onClick={onClick}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.2 }}
         >
             {value}
-        </button>
+        </motion.button>
     );
-
 }
 
 export default Cell;

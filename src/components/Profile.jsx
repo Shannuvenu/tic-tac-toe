@@ -1,28 +1,43 @@
 import { signOut } from "firebase/auth";
+import { FaSignOutAlt } from "react-icons/fa";
+
 import { auth } from "../firebase";
 
-function Profile({ user }) {
+function Profile({ user, avatar }) {
 
-    const logout = () => {
+    function logout() {
+        localStorage.removeItem("avatar");
         signOut(auth);
-    };
+    }
+
+    if (!user) {
+        return null;
+    }
 
     return (
-        <div style={{ textAlign: "center" }}>
+        <div className="profile-card">
 
-            <img
-                src={user.photoURL}
-                alt=""
-                width="80"
-                style={{ borderRadius: "50%" }}
-            />
+            <div className="profile-left">
 
-            <h2>{user.displayName}</h2>
+                <img
+                    src={avatar || user.photoURL}
+                    alt="avatar"
+                    className="profile-avatar"
+                />
 
-            <p>{user.email}</p>
+                <div>
+                    <h2>{user.displayName || "Player"}</h2>
+                    <p>{user.email}</p>
+                </div>
 
-            <button onClick={logout}>
-                Logout
+            </div>
+
+            <button
+                className="logout-btn"
+                onClick={logout}
+            >
+                <FaSignOutAlt />
+                &nbsp; Logout
             </button>
 
         </div>
